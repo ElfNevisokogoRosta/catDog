@@ -9,10 +9,16 @@ export class TaskRepository extends Repository<Task> {
   async createTask(task: Task): Promise<Task> {
     return await this.save(task);
   }
-  async updateTask(id: number, task: Task) {
-    return await this.update(id, task);
+  async updateTask(id: number, listInfo: string) {
+    if (listInfo === 'done') {
+      return await this.update(id, { list: 'undone' });
+    }
+    return await this.update(id, { list: 'done' });
   }
-  async getTaskList(ownerId: number): Promise<Task[]> {
+  async getTasks(ownerId: number): Promise<Task[]> {
     return await this.findBy({ owner: ownerId });
+  }
+  async deleteTask(id: number) {
+    return await this.delete(id);
   }
 }

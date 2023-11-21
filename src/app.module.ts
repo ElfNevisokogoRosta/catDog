@@ -10,7 +10,6 @@ import dbConfig from './common/config/db.confgin';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthController } from './auth/auth.controller';
-import { TaskModule } from './task/task.module';
 import { TasksModule } from './tasks/tasks.module';
 
 @Module({
@@ -19,7 +18,6 @@ import { TasksModule } from './tasks/tasks.module';
     TypeOrmModule.forRootAsync(dbConfig),
     UsersModule,
     AuthModule,
-    TaskModule,
     TasksModule,
   ],
   controllers: [

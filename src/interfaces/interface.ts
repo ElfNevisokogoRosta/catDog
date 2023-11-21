@@ -7,8 +7,7 @@ interface IUser {
 interface ITask {
   id?: number;
   title: string;
-  description: string;
-  status: string;
-  userId: number;
+  dis: string;
+  owner: number;
 }
 export { IUser, ITask };
