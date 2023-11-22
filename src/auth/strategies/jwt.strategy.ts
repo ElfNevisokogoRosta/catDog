@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { AuthService } from '../auth.service';
 import { JwtPayload } from '../auth.types';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 @Injectable()

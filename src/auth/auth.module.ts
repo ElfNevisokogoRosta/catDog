@@ -7,6 +7,7 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 @Module({

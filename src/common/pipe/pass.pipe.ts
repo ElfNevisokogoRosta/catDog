@@ -9,7 +9,8 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class PassPipe implements PipeTransform {
   constructor() {}
-  async transform(value: IUser, metadata: ArgumentMetadata) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async transform(value: IUser, _metadata: ArgumentMetadata) {
     try {
       const saltOrRounds = 10;
       const hash = await bcrypt.hash(value.password, saltOrRounds);

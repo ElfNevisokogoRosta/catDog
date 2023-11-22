@@ -20,6 +20,7 @@ export class UsersService {
   }
   async userInfo({ id }) {
     const userInfo = await this.usersRepository.userInfo(parseInt(id));
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...result } = userInfo;
     return result;
   }
