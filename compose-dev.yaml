@@ -1,0 +1,11 @@
+services:
+  server:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - ./src:/usr/src/app/src
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
