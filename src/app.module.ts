@@ -11,7 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthController } from './auth/auth.controller';
 import { TasksModule } from './tasks/tasks.module';
-
+console.log(config);
 @Module({
   imports: [
     ConfigModule.forRoot(config),

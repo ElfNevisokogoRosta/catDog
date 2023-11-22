@@ -5,9 +5,15 @@ export default {
   imports: [ConfigModule],
   useFactory: async (configService: ConfigService): Promise<unknown> => ({
     type: configService.get('database.type'),
-    url: configService.get('database.url'),
+    host: configService.get('database.host'),
+    port: configService.get('database.port'),
+    username: configService.get('database.username'),
+    password: configService.get('database.password'),
+    database: configService.get('database.name'),
     entities: Object.values(Entities),
+    synchronize: false,
     logging: ['error'],
+    ssl: true,
   }),
   inject: [ConfigService],
 };
