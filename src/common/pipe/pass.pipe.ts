@@ -4,13 +4,12 @@ import {
   ArgumentMetadata,
   BadRequestException,
 } from '@nestjs/common';
-import { IUser } from 'src/interfaces/interface';
+
 import * as bcrypt from 'bcrypt';
 @Injectable()
 export class PassPipe implements PipeTransform {
   constructor() {}
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async transform(value: IUser, _metadata: ArgumentMetadata) {
+  async transform(value: any, _metadata: ArgumentMetadata) {
     try {
       const saltOrRounds = 10;
       const hash = await bcrypt.hash(value.password, saltOrRounds);

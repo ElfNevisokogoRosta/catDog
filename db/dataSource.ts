@@ -12,7 +12,6 @@ export const AppDataSource = new DataSource({
   entities: ['./db/entity/index.ts'],
   migrations: ['./db/migrations/*.ts'],
 });
-console.log(AppDataSource);
 AppDataSource.initialize()
   .then(() => {
     console.log('数据库连接成功');

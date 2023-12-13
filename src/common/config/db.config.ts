@@ -13,7 +13,6 @@ export default {
     entities: Object.values(Entities),
     synchronize: false,
     logging: ['error'],
-    ssl: true,
   }),
   inject: [ConfigService],
 };

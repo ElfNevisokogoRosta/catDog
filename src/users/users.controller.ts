@@ -1,30 +1,17 @@
-import {
-  Body,
-  Controller,
-  UsePipes,
-  Post,
-  Get,
-  Param,
-  UseGuards,
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { PassPipe } from '../common/pipe/pass.pipe';
-import { CreateUserDto } from 'src/common/dto/create-user.dto';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Post, UsePipes, Body } from '@nestjs/common';
+import { UsersService } from './service/users.service';
+import { ZodValidationPipe } from 'src/common/pipe/zodValidations.pipe';
+import { CreateUserDto, createUserSchema } from './userDto/user.dto';
+import { PassPipe } from 'src/common/pipe/pass.pipe';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly userService: UsersService) {}
   @Post()
-  @UsePipes(new PassPipe())
-  async registerUser(@Body() createUserDto: CreateUserDto) {
-    const newUser = await this.usersService.registerUser(createUserDto);
-    return newUser;
-  }
-  @UseGuards(AuthGuard('jwt'))
-  @Get('/:id')
-  async getUserInfo(@Param() userId) {
-    const user = await this.usersService.userInfo(userId);
-    return user;
+  @UsePipes(new ZodValidationPipe(createUserSchema))
+  // @UsePipes(new PassPipe())
+  async createUser(@Body() createUserDto: CreateUserDto) {
+    console.log(createUserDto);
+    return await this.userService.create(createUserDto);
   }
 }
